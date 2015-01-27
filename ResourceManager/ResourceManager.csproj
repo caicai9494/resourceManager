@@ -40,12 +40,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controller\ListViewController.cs" />
     <Compile Include="Controller\TreeViewController.cs" />
-    <Compile Include="Panels\ListViewPanel.cs" />
-    <Compile Include="Panels\TreeViewPanel.cs" />
     <Compile Include="Controller\FileController.cs" />
     <Compile Include="Forms\panelForm.cs" />
     <Compile Include="Threads\ThreadArgs.cs" />
     <Compile Include="common\Constants.cs" />
+    <Compile Include="Views\ListViewPanel.cs" />
+    <Compile Include="Views\TreeViewPanel.cs" />
+    <Compile Include="Controller\StatusBarController.cs" />
+    <Compile Include="Views\InfoStatusBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
