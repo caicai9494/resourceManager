@@ -9,15 +9,6 @@ using ResourceManager;
 
 namespace ResourceManagerPanel
 {
-	static class Constants
-	{
-		public static int CHECKMEM = 0;
-		public static int CHECKMEM100 = 1;
-		public static int DELETE = 2;
-		public static int COPY = 3;
-		public static int RENAME = 4;
-		public static int MOVE = 5;
-	}
 	public class ListViewPanel : Panel
 	{
 		private ContextMenuStrip _contextMenuStrip;
@@ -54,6 +45,7 @@ namespace ResourceManagerPanel
 			_listView.Parent = this;
 			_listView.Dock = DockStyle.Fill;
 			_listView.View = View.LargeIcon;
+			_listView.LabelEdit = true;
 
 			_listViewController = new ListViewController (this);
 
@@ -61,7 +53,10 @@ namespace ResourceManagerPanel
 			_statusBar.Parent = this;
 			_statusBar.Dock = DockStyle.Bottom;
 
-			_contextMenuStrip = new ContextMenuStrip ();
+			//_contextMenuStrip = new ContextMenuStrip ();
+			//_contextMenuStrip = _listView.ContextMenuStrip;
+			_listView.ContextMenuStrip = new ContextMenuStrip ();
+			_contextMenuStrip = _listView.ContextMenuStrip;
 			_contextMenuStrip.AutoClose = true;
 
 			ToolStripMenuItem itemCheckMem = new ToolStripMenuItem ("&CheckMemory");
@@ -152,22 +147,25 @@ namespace ResourceManagerPanel
 
 			};
 
-
-			_listView.MouseDown += (object sender, MouseEventArgs e) => 
+			_listView.AfterLabelEdit += (object sender, LabelEditEventArgs e) => 
 			{
-				if(e.Button == MouseButtons.Right)
-					_contextMenuStrip.Show(e.Location.X + this.Parent.Width/2, e.Location.Y + 50);
+				
+				FileController ufile = new FileController(_listViewController.CurrentDirectory.FullName + 
+				                                          Path.DirectorySeparatorChar + e.Label);
+				string newName = e.Label;
+				newName = newName.Replace(Environment.NewLine, "");
 
+				ufile.Rename(newName);
 			};
 
 			_listView.ItemSelectionChanged += (object sender, ListViewItemSelectionChangedEventArgs e) => 
 			{
 				string path = _listViewController.CurrentDirectory.FullName + Path.DirectorySeparatorChar + e.Item.Text;
 				try{
-				if(!Directory.Exists(path))
-					Process.Start(path);
-				}catch(Exception ee){
-					Console.WriteLine(ee.Message);
+					if(!Directory.Exists(path))
+					 	Process.Start(path);
+					}catch(Exception ee){
+						Console.WriteLine(ee.Message);
 				}
 
 				_listViewController.SetListViewItem(e.Item);
@@ -177,7 +175,6 @@ namespace ResourceManagerPanel
 					foreach(ToolStripMenuItem item in _contextMenuStrip.Items){
 						item.Enabled = true;
 					}
-
 				}
 			};
 

@@ -38,13 +38,19 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThreadArgs.cs" />
-    <Compile Include="panelForm.cs" />
     <Compile Include="Controller\ListViewController.cs" />
     <Compile Include="Controller\TreeViewController.cs" />
     <Compile Include="Panels\ListViewPanel.cs" />
     <Compile Include="Panels\TreeViewPanel.cs" />
     <Compile Include="Controller\FileController.cs" />
+    <Compile Include="Forms\panelForm.cs" />
+    <Compile Include="Threads\ThreadArgs.cs" />
+    <Compile Include="common\Constants.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Forms\" />
+    <Folder Include="Threads\" />
+    <Folder Include="common\" />
+  </ItemGroup>
 </Project>

@@ -35,6 +35,8 @@ namespace ResourceManager
 		public FileController (string path)
 		{
 			//Console.WriteLine (path);
+			if (!File.Exists (path) && !Directory.Exists (path))
+				throw new Exception ("Not valid path");
 
 			if (File.Exists (path))
 				_file = new FileInfo (path);
@@ -111,7 +113,7 @@ namespace ResourceManager
 
 		public void Rename(string name)
 		{
-			MoveTo (Environment.CurrentDirectory + Path.PathSeparator + name);
+			MoveTo (Environment.CurrentDirectory + Path.DirectorySeparatorChar + name);
 		}
 
 	}

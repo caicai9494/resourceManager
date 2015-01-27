@@ -40,10 +40,12 @@ namespace ResourceManagerController
 
 			try{
 					foreach (DirectoryInfo d in dir.GetDirectories()) {
-						_listViewPanel.GetListView ().Items.Add (d.Name);
+						if(!d.Name.StartsWith("."))
+							_listViewPanel.GetListView ().Items.Add (d.Name);
 					}
 					foreach (FileInfo f in dir.GetFiles()) {
-						_listViewPanel.GetListView ().Items.Add (f.Name);
+						if(!f.Name.StartsWith("."))
+							_listViewPanel.GetListView ().Items.Add (f.Name);
 					}
 
 			}catch{

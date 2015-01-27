@@ -1,8 +1,10 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using ResourceManagerController;
+using ResourceManager;
 
 namespace ResourceManagerPanel 
 {
@@ -10,6 +12,8 @@ namespace ResourceManagerPanel
 	{
 		private TreeViewController _treeViewController;
 		private TreeView _treeView;
+
+		private List<DirectoryInfo> _directoryHistory = new List<DirectoryInfo> ();
 
 		//addnode
 		public Action<DirectoryInfo> TreeViewHandler;
@@ -35,7 +39,6 @@ namespace ResourceManagerPanel
 			_treeView.Dock = DockStyle.Fill;
 
 			_treeViewController = new TreeViewController (_treeView);
-
 
 			_treeView.AfterExpand += (object sender, TreeViewEventArgs e) => 
 			{

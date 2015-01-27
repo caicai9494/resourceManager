@@ -1,31 +1,29 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using ResourceManagerPanel;
+using ResourceManager;
 
 namespace ResourceManagerController
 {
 	public class TreeViewController
 	{
-		private DirectoryInfo _root = new DirectoryInfo(Directory.GetDirectoryRoot(Environment.CurrentDirectory));
 		private TreeView _treeView;
 		public TreeViewController (TreeView tv)
 		{
 			_treeView = tv;
 			Initialize ();
-
-			//_directory = new DirectoryInfo ("/");
 		}
 
 		private void Initialize()
 		{
-			//ClearAllNode ();
 
 			TreeNode n = new TreeNode ();
-			n.Text = _root.FullName;
+			n.Text = Constants.ROOT.FullName;
 			_treeView.Nodes.Add (n);
 
-			AddNode (n, _root);
+			AddNode (n, Constants.ROOT);
 		}
 
 		public void AddNode(TreeNode tnode, DirectoryInfo dir)
@@ -34,11 +32,16 @@ namespace ResourceManagerController
 
 			try{
 				foreach (DirectoryInfo d in dir.GetDirectories()) {
-					TreeNode n = new TreeNode ();
-					n.Text = d.FullName;
-					tnode.Nodes.Add (n);
+					//hide directory starts with .
+					if(!d.Name.StartsWith("."))
+					{
+						TreeNode n = new TreeNode ();
+						n.Text = d.FullName;
+						tnode.Nodes.Add (n);
+					}
 				}
 			}catch{
+				Console.WriteLine ("Fair to add note");
 				//MessageBox.Show ("Fail to access {1} !", tnode.Name); 
 			}
 		}
@@ -47,6 +50,15 @@ namespace ResourceManagerController
 		{
 			if (tnode.Nodes.Count != 0)
 				tnode.Nodes.Clear ();
+		}
+
+		public void SearchNode(DirectoryInfo dir)
+		{
+
+		}
+
+		public void RemoteNode(DirectoryInfo dir)
+		{
 		}
 
 	}
