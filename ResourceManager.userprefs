@@ -1,12 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ResourceManager/Panels/ListViewPanel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ResourceManager/Views/TreeViewPanel.cs">
     <Files>
-      <File FileName="ResourceManager/Program.cs" Line="13" Column="18" />
-      <File FileName="ResourceManager/Controller/FileController.cs" Line="59" Column="64" />
-      <File FileName="ResourceManager/Controller/TreeViewController.cs" Line="7" Column="1" />
-      <File FileName="ResourceManager/Controller/ListViewController.cs" Line="14" Column="3" />
-      <File FileName="ResourceManager/Panels/ListViewPanel.cs" Line="1" Column="1" />
+      <File FileName="ResourceManager/Controller/TreeViewController.cs" Line="21" Column="1" />
+      <File FileName="ResourceManager/Views/TreeViewPanel.cs" Line="22" Column="3" />
+      <File FileName="ResourceManager/Views/NavigationPanel.cs" Line="13" Column="4" />
+      <File FileName="ResourceManager/Controller/NavigationController.cs" Line="18" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

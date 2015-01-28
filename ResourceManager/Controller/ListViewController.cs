@@ -7,7 +7,6 @@ namespace ResourceManagerController
 {
 	public class ListViewController
 	{
-		public Action<FileSystemInfo> ListViewPanelHandler;
 
 		private DirectoryInfo _currentDirectory;
 		public DirectoryInfo CurrentDirectory
@@ -58,7 +57,7 @@ namespace ResourceManagerController
 		{
 			ClearList ();
 			PopulateList (CurrentDirectory);
-			DisableContextMenuItems ();
+			//DisableContextMenuItems ();
 		}
 
 		public void ClearList()

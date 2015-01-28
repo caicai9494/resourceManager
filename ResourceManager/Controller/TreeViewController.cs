@@ -9,10 +9,10 @@ namespace ResourceManagerController
 {
 	public class TreeViewController
 	{
-		private TreeView _treeView;
-		public TreeViewController (TreeView tv)
+		private TreeViewPanel _treeViewPanel;
+		public TreeViewController (TreeViewPanel tv)
 		{
-			_treeView = tv;
+			_treeViewPanel = tv;
 			Initialize ();
 		}
 
@@ -21,7 +21,7 @@ namespace ResourceManagerController
 
 			TreeNode n = new TreeNode ();
 			n.Text = Constants.ROOT.FullName;
-			_treeView.Nodes.Add (n);
+			_treeViewPanel.GetTreeView().Nodes.Add (n);
 
 			AddNode (n, Constants.ROOT);
 		}

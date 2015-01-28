@@ -88,6 +88,7 @@ namespace ResourceManager
 	{
 		private TreeViewPanel _treeViewPanel;
 		private ListViewPanel _listViewPanel;
+		private NavigationPanel _navigationPanel;
 
 		public TestForm()
 		{
@@ -105,8 +106,15 @@ namespace ResourceManager
 
 			_listViewPanel = new ListViewPanel (this);
 			_treeViewPanel = new TreeViewPanel (this);
+			_navigationPanel = new NavigationPanel (this);
+
 			_treeViewPanel.TreeViewHandler = _listViewPanel.GetListViewController ().PopulateList;
 			_treeViewPanel.TreeViewHandler2 = _listViewPanel.GetListViewController ().ClearList;
+			_treeViewPanel.TreeViewHandler3 = _navigationPanel.GetNavigationController ().AddHistoryNode;
+
+			_navigationPanel.AddNodeHandler = _treeViewPanel.GetTreeViewController ().AddNode;
+			_navigationPanel.RemoveNodeHandler = _treeViewPanel.GetTreeViewController ().ClearAllNode;
+
 		}
 	}
 

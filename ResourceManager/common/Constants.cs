@@ -11,6 +11,7 @@ namespace ResourceManager
 		public static int COPY = 3;
 		public static int RENAME = 4;
 		public static int MOVE = 5;
+
 		public static int MB = 1024;
 
 		public static DirectoryInfo ROOT = new DirectoryInfo("/home/linzhe/Downloads/");

@@ -48,6 +48,8 @@
     <Compile Include="Views\TreeViewPanel.cs" />
     <Compile Include="Controller\StatusBarController.cs" />
     <Compile Include="Views\InfoStatusBar.cs" />
+    <Compile Include="Views\NavigationPanel.cs" />
+    <Compile Include="Controller\NavigationController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
